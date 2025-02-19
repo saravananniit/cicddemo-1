@@ -1,5 +1,8 @@
-	pipeline {
+pipeline {
 	    agent any
+             tools {
+        		maven 'Maven 3.9.9' // Name must match the one in Jenkins Global Tool Configuration
+    		   }
 	    stages {
 	        stage('Clean') {
 	            steps {
@@ -15,10 +18,10 @@
 	            steps {
 	                sh 'mvn test'
 	            }
-	      }
+	        }
 	        stage('package') {
 	            steps {
-                sh 'mvn package'
+	                sh 'mvn package'
 	            }
 	        }
 	        stage('Install') {
